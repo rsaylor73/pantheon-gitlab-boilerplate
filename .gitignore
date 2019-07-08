@@ -1,4 +1,11 @@
 ###
+### Custom .gitignore section
+###
+
+# Ingore local development settings and files
+/local
+
+###
 ### GitHub repository .gitignore section
 ###
 

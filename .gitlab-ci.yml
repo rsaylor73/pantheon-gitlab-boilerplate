@@ -1,5 +1,5 @@
 # Build tools Dockerfile
-image: quay.io/pantheon-public/build-tools-ci:5.x
+image: quay.io/pantheon-public/build-tools-ci:6.x
 
 # Default Variables
 variables:
@@ -13,13 +13,12 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
   - vendor/
+  - web/themes/custom/example_theme/node_modules
   - /composer/cache
   - $HOME/.composer/cache
 
 stages:
 - build
-- test
-- cleanup
 
 before_script:
 - export PATH="$PATH:$CI_PROJECT_DIR/.ci/scripts"
@@ -39,42 +38,8 @@ deploy:
   - echo "Target site.env is $TERMINUS_SITE.$TERMINUS_ENV"
   - 01-prepare
   - composer -n build-assets
-  - 02-init-site-under-test-clone-existing
+  - npm install
+  - 02-deploy
   only:
   - merge_requests
   - master
-
-test:code_sniff_unit_test:
-  stage: test
-  script:
-  - composer install --no-ansi --no-interaction --optimize-autoloader --no-progress
-  - rm -rf web
-  - git checkout -- web
-  - composer -n lint
-  - composer -n code-sniff
-  - composer -n unit-test
-  only:
-  - merge_requests
-  - master
-
-test:behat:
-  stage: test
-  script:
-  - composer install --no-ansi --no-interaction --optimize-autoloader --no-progress
-  - 03-test
-  - 04-post-test
-  only:
-  - merge_requests
-  - master
-
-test:behat:cleanup:
-  stage: cleanup
-  when: always
-  script:
-  - 05-merge-master
-  - 09-cleanup-fixtures
-  only:
-  - merge_requests
-  - master
-  dependencies:
-  - test:behat

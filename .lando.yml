@@ -1,0 +1,8 @@
+name: example
+recipe: drupal8
+config:
+  via: nginx
+  webroot: web
+  php: '7.2'
+  xdebug: true
+  database: mariadb:latest
