@@ -1,0 +1,14 @@
+_local:
+  root: /private/var/www/example.com/www/web
+  uri: example.lndo.site
+
+'*':
+  host: appserver.${env-name}.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.drush.in
+  paths:
+    files: files
+    drush-script: drush9
+  uri: https://${env-name}-example.pantheonsite.io
+  user: ${env-name}.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  ssh:
+    options: '-p 2222 -o "AddressFamily inet"'
+    tty: false

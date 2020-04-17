@@ -1,9 +1,24 @@
+# Pantheon Advanced Site Configuration
+# See: https://pantheon.io/docs/pantheon-yml/
+
+# API Version:
+# https://pantheon.io/docs/pantheon-yml#advanced-site-configuration
 api_version: 1
-web_docroot: true
+
+# PHP Version:
+# https://pantheon.io/docs/pantheon-yml#php-version
+# https://pantheon.io/docs/php-versions/
 php_version: 7.2
-workflows:
-  sync_code:
-    after:
-      - type: webphp
-        description: Push changes back to GitHub if needed
-        script: private/scripts/quicksilver/quicksilver-pushback/push-back-to-github.php
+
+# Drush Version:
+# https://pantheon.io/docs/pantheon-yml#drush-version
+# https://pantheon.io/docs/drush-versions/
+drush_version: 9
+
+# Nested Docroot:
+# See https://pantheon.io/docs/pantheon-yml#nested-docroot
+web_docroot: true
+
+# HTTPS Settings:
+# See https://pantheon.io/docs/pantheon-yml/#enforce-https--hsts for valid values.
+enforce_https: off

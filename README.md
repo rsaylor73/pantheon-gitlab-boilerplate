@@ -8,5 +8,5 @@ _**Note:** This project is a fork of https://github.com/pantheon-systems/example
 ## Getting started
 
 **Modify the following files**
- - `.lando.yml`
- - `.example.aliases.drushrc.php`
+ - `./.lando.yml`
+ - `./drush/sites/example.site.yml`
