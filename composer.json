@@ -29,7 +29,7 @@
         "drupal/config_ignore": "^2.2",
         "drupal/config_installer": "^1.0",
         "drupal/config_split": "^1.4",
-        "drupal/console": "^1",
+        "drupal/console": "~1.0",
         "drupal/core-recommended": "^8.8",
         "drupal/devel": "^2.1",
         "drupal/drupal-extension": "^3.1",

@@ -1,8 +1,8 @@
-name: example
+name: d8
 recipe: drupal8
 config:
   via: nginx
-  webroot: web
-  php: 7.2
+  webroot: /web
+  php: 7.3
   xdebug: true
   database: mariadb
